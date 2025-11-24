@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sheyda | Unity Developer & Cognitive Gaming Researcher</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Portfolio of Sheyda – Unity game developer and cognitive gaming researcher specializing in game-based assessment and gameplay systems."
+  />
+
+  <!-- Simple, clean font (optional – you can remove if you prefer system fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --bg-soft: #10172f;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.12);
+      --accent-strong: #0ea5e9;
+      --text: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.35);
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.9);
+      --radius-lg: 1.25rem;
+      --radius-full: 999px;
+      --max-width: 1040px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 52%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(
+        to bottom,
+        rgba(15, 23, 42, 0.94),
+        rgba(15, 23, 42, 0.72),
+        transparent
+      );
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+    }
+
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 0.25rem;
+    }
+
+    .brand {
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: #e5e7eb;
+    }
+
+    .brand-pill {
+      width: 20px;
+      height: 20px;
+      border-radius: 0.9rem;
+      background: radial-gradient(circle at 20% 20%, #38bdf8, #1e40af);
+      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.3),
+        0 10px 30px rgba(56, 189, 248, 0.4);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links a {
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: all 0.16s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      border-color: rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .nav-links a.nav-cta {
+      border-color: rgba(56, 189, 248, 0.4);
+      background: linear-gradient(
+        135deg,
+        rgba(56, 189, 248, 0.15),
+        rgba(59, 130, 246, 0.25)
+      );
+      color: #f9fafb;
+    }
+
+    .nav-links a.nav-cta:hover {
+      border-color: rgba(56, 189, 248, 0.85);
+      background: linear-gradient(
+        135deg,
+        rgba(56, 189, 248, 0.35),
+        rgba(59, 130, 246, 0.55)
+      );
+    }
+
+    /* HERO */
+    .hero {
+      padding: 4rem 0 3rem;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 3.2fr 2.1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    @media (max-width: 840px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-intro-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.88);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.35);
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 3vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-highlight {
+      background: linear-gradient(to right, #38bdf8, #22c55e);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 34rem;
+      margin-bottom: 1.7rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      font-size: 0.9rem;
+      padding: 0.6rem 1.3rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.18s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(
+        135deg,
+        rgba(56, 189, 248, 0.9),
+        rgba(59, 130, 246, 0.95)
+      );
+      border-color: rgba(56, 189, 248, 0.6);
+      color: #0b1120;
+      font-weight: 600;
+      box-shadow: 0 15px 40px rgba(37, 99, 235, 0.55);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 50px rgba(37, 99, 235, 0.7);
+    }
+
+    .btn-ghost {
+      border-color: rgba(148, 163, 184, 0.55);
+      color: var(--text);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(148, 163, 184, 0.9);
+      background: rgba(15, 23, 42, 1);
+    }
+
+    .hero-meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.1rem;
+      max-width: 32rem;
+    }
+
+    .hero-meta-item {
+      border-radius: 1rem;
+      padding: 0.7rem 0.85rem;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      background: radial-gradient(
+        circle at top left,
+        rgba(56, 189, 248, 0.2),
+        rgba(15, 23, 42, 1)
+      );
+      font-size: 0.8rem;
+    }
+
+    .hero-meta-label {
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      margin-bottom: 0.1rem;
+    }
+
+    .hero-meta-value {
+      font-weight: 500;
+    }
+
+    .hero-meta-sub {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .hero-card {
+      border-radius: 1.5rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: radial-gradient(circle at top, #020617 0, #020617 36%, #020617 100%);
+      backdrop-filter: blur(20px);
+      box-shadow: var(--shadow-soft);
+      padding: 1.35rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .hero-card-badge {
+      font-size: 0.75rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: var(--text-muted);
+    }
+
+    .hero-card-pill-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent-strong);
+      box-shadow: 0 0 0 5px rgba(56, 189, 248, 0.45);
+    }
+
+    .hero-card-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.1rem;
+    }
+
+    .hero-card-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .hero-card-list {
+      margin-top: 0.3rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .hero-card-list li {
+      margin-left: 1.1rem;
+      margin-bottom: 0.18rem;
+    }
+
+    .hero-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+    }
+
+    .hero-card-tag {
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: var(--accent);
+      font-size: 0.72rem;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 2.8rem 0;
+    }
+
+    section:nth-of-type(odd) {
+      background: transparent;
+    }
+
+    section:nth-of-type(even) {
+      background: radial-gradient(
+        circle at top,
+        rgba(15, 23, 42, 0.85),
+        rgba(15, 23, 42, 1)
+      );
+    }
+
+    .section-header {
+      margin-bottom: 1.75rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      max-width: 30rem;
+    }
+
+    /* PROJECTS */
+    .grid {
+      display: grid;
+      gap: 1.4rem;
+    }
+
+    @media (min-width: 720px) {
+      .grid-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .card {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      background: linear-gradient(
+        145deg,
+        rgba(15, 23, 42, 0.98),
+        rgba(15, 23, 42, 0.96),
+        rgba(15, 23, 42, 1)
+      );
+      padding: 1.1rem 1.2rem;
+      box-shadow: 0 14px 35px rgba(15, 23, 42, 0.85);
+    }
+
+    .card-header-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.8rem;
+      align-items: baseline;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-title {
+      font-weight: 600;
+      font-size: 0.98rem;
+    }
+
+    .card-tag {
+      font-size: 0.74rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: var(--text-muted);
+    }
+
+    .card-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .card-tech {
+      font-size: 0.78rem;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+
+    .card-body {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .card-list {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      padding-left: 1.1rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .card-list li {
+      margin-bottom: 0.18rem;
+    }
+
+    .card-footer {
+      font-size: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .card-link {
+      font-size: 0.8rem;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .pill-link {
+      font-size: 0.78rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.6);
+      color: var(--accent);
+      background: rgba(8, 47, 73, 0.4);
+    }
+
+    .pill-link:hover {
+      background: rgba(8, 47, 73, 0.8);
+    }
+
+    /* EXPERIENCE */
+    .timeline {
+      border-left: 1px solid rgba(148, 163, 184, 0.4);
+      padding-left: 1rem;
+      margin-left: 0.4rem;
+      display: grid;
+      gap: 1.1rem;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 0.4rem;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -1.32rem;
+      top: 0.22rem;
+      width: 11px;
+      height: 11px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #38bdf8, #1e40af);
+      box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.2);
+    }
+
+    .timeline-role {
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .timeline-org {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+    }
+
+    .timeline-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.1rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .timeline-list {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      padding-left: 1.05rem;
+    }
+
+    .timeline-list li {
+      margin-bottom: 0.18rem;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    @media (min-width: 720px) {
+      .skills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .skills-group-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+
+    .skill-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .skill-badge {
+      font-size: 0.78rem;
+      padding: 0.18rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--text-muted);
+    }
+
+    /* ABOUT & CONTACT */
+    .about-text,
+    .contact-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      max-width: 36rem;
+    }
+
+    .contact-list {
+      margin-top: 0.8rem;
+      font-size: 0.88rem;
+      display: grid;
+      gap: 0.3rem;
+    }
+
+    .contact-list a {
+      color: var(--accent);
+    }
+
+    .muted {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 1.6rem 0 2rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(15, 23, 42, 1);
+    }
+
+    footer .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- NAV -->
+    <header class="navbar">
+      <div class="container navbar-inner">
+        <div class="brand">
+          <div class="brand-pill"></div>
+          <span>Sheyda · Unity & Cognitive Games</span>
+        </div>
+        <nav class="nav-links">
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#research">Research</a>
+          <a href="#skills">Skills</a>
+          <a href="#about">About</a>
+          <a href="#contact" class="nav-cta">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <main>
+      <section class="hero" id="home">
+        <div class="container hero-inner">
+          <div>
+            <div class="hero-intro-pill">
+              <span class="dot"></span>
+              <span>Available for remote roles & research collaborations</span>
+            </div>
+
+            <h1 class="hero-title">
+              Unity Game Developer &amp;
+              <span class="hero-highlight">Cognitive Gaming Researcher</span>
+            </h1>
+
+            <p class="hero-subtitle">
+              I design and build Unity-based games and interactive systems that
+              focus on <strong>attention</strong>, <strong>reaction time</strong>,
+              and <strong>game-based cognitive assessment</strong>. My work spans
+              shipped mobile titles, custom gameplay systems, and
+              IEEE-published research.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#projects" class="btn-primary">
+                View featured projects
+                <span>↓</span>
+              </a>
+              <a href="#contact" class="btn-ghost">
+                Get in touch
+              </a>
+            </div>
+
+            <div class="hero-meta">
+              <div class="hero-meta-item">
+                <div class="hero-meta-label">Experience</div>
+                <div class="hero-meta-value">5+ years</div>
+                <div class="hero-meta-sub">Unity &amp; C# gameplay dev</div>
+              </div>
+              <div class="hero-meta-item">
+                <div class="hero-meta-label">Focus</div>
+                <div class="hero-meta-value">Game-based assessment</div>
+                <div class="hero-meta-sub">Attention · Reaction · UX</div>
+              </div>
+              <div class="hero-meta-item">
+                <div class="hero-meta-label">Background</div>
+                <div class="hero-meta-value">MSc Software Eng.</div>
+                <div class="hero-meta-sub">IEEE-published work</div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="hero-card">
+            <div class="hero-card-badge">
+              <span class="hero-card-pill-dot"></span>
+              <span>Snapshot</span>
+            </div>
+            <div>
+              <div class="hero-card-title">
+                Game-based cognitive tools &amp; mobile experiences
+              </div>
+              <p class="hero-card-text">
+                I combine gameplay programming, experimental design, and
+                performance optimization to build games that are fun to play and
+                meaningful for research.
+              </p>
+            </div>
+            <ul class="hero-card-list">
+              <li>Shipped Unity mobile title (Nitro2D) on Google Play</li>
+              <li>Developed attention &amp; reaction-speed training game</li>
+              <li>Published IEEE work on game-driven cognitive screening</li>
+            </ul>
+            <div class="hero-card-footer">
+              <span class="hero-card-tag">Unity · C# · Cognitive UX</span>
+              <span class="muted">Open to collaborations &amp; PhD projects</span>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects">
+        <div class="container">
+          <header class="section-header">
+            <div class="section-eyebrow">Projects</div>
+            <h2 class="section-title">Selected Games &amp; Systems</h2>
+            <p class="section-subtitle">
+              A mix of shipped products, experimental prototypes, and research
+              tools built in Unity using C#, async workflows, and custom tooling.
+            </p>
+          </header>
+
+          <div class="grid grid-2">
+            <!-- Nitro2D -->
+            <article class="card">
+              <div class="card-header-row">
+                <h3 class="card-title">Nitro2D – Modular 2D Platformer Engine</h3>
+                <span class="card-tag">Published</span>
+              </div>
+              <div class="card-meta">Lead Developer · KingKodeStudio</div>
+              <div class="card-tech">
+                Unity · C# · Custom Tools · Physics · UI · Mobile
+              </div>
+              <p class="card-body">
+                Nitro2D is a Unity-based 2D platformer engine designed for
+                smooth controls, extensible architecture, and fast content
+                creation for mobile games.
+              </p>
+              <ul class="card-list">
+                <li>Built modular editor tooling to speed up level creation.</li>
+                <li>Implemented precise collision and responsive platforming.</li>
+                <li>Optimized UI and asset-loading for mobile performance.</li>
+              </ul>
+              <div class="card-footer">
+                <a
+                  href="#"
+                  class="pill-link"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  >View on Google Play</a
+                >
+                <span class="muted">KingKodeStudio · Mobile</span>
+              </div>
+            </article>
+
+            <!-- Attention Trainer -->
+            <article class="card">
+              <div class="card-header-row">
+                <h3 class="card-title">
+                  Attention Trainer – Cognitive Reaction &amp; Focus Game
+                </h3>
+                <span class="card-tag">Prototype</span>
+              </div>
+              <div class="card-meta">Gameplay Developer &amp; Cognitive Designer</div>
+              <div class="card-tech">
+                Unity · Async/Await · Remote Assets · UX · Animation
+              </div>
+              <p class="card-body">
+                A fast-paced, Whack-a-Mole-inspired game designed to measure and
+                train attention, reaction speed, and sustained focus through
+                adaptive gameplay.
+              </p>
+              <ul class="card-list">
+                <li>
+                  Implemented adaptive difficulty based on player performance.
+                </li>
+                <li>
+                  Used async image loading and remote assets to keep the UI
+                  responsive.
+                </li>
+                <li>
+                  Designed a smooth splash-to-game flow with state machines and
+                  animations.
+                </li>
+              </ul>
+              <div class="card-footer">
+                <a
+                  href="#"
+                  class="pill-link"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  >Watch gameplay video</a
+                >
+                <span class="muted">Cognitive training · Mobile</span>
+              </div>
+            </article>
+
+            <!-- Agent-based screening -->
+            <article class="card">
+              <div class="card-header-row">
+                <h3 class="card-title">
+                  Agent-Based Game-Driven Cognitive Screening
+                </h3>
+                <span class="card-tag">Research</span>
+              </div>
+              <div class="card-meta">
+                Researcher · IEEE Conference · Award-winning
+              </div>
+              <div class="card-tech">
+                Unity Simulation · Multi-Agent Systems · Data Analysis
+              </div>
+              <p class="card-body">
+                A research project exploring how game-like environments and
+                agent-based simulations can support cognitive screening and
+                behavioral analysis.
+              </p>
+              <ul class="card-list">
+                <li>Built experimental Unity environment for cognitive tasks.</li>
+                <li>Used multi-agent setups to model behavior and interaction.</li>
+                <li>Published in IEEE and recognized at a video game symposium.</li>
+              </ul>
+              <div class="card-footer">
+                <a href="#" class="card-link" target="_blank" rel="noreferrer noopener"
+                  >View publication (PDF)</a
+                >
+                <span class="muted">Academic · IEEE</span>
+              </div>
+            </article>
+
+            <!-- Additional prototypes -->
+            <article class="card">
+              <div class="card-header-row">
+                <h3 class="card-title">Additional Unity Prototypes &amp; Tools</h3>
+                <span class="card-tag">In progress</span>
+              </div>
+              <div class="card-meta">R&amp;D · Personal &amp; experimental</div>
+              <div class="card-tech">
+                Unity · Gameplay Systems · Tools · Rendering Experiments
+              </div>
+              <p class="card-body">
+                A collection of smaller prototypes exploring mechanics, visual
+                styles, and tools, including camera systems, BRDF experiments,
+                and interaction patterns.
+              </p>
+              <ul class="card-list">
+                <li>Camera and FOV experiments based on 3D math concepts.</li>
+                <li>Rendering tests using BRDF and lighting techniques.</li>
+                <li>Internal tools for debugging, logging, and profiling.</li>
+              </ul>
+              <div class="card-footer">
+                <span class="muted">Code samples available on request</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section id="experience">
+        <div class="container">
+          <header class="section-header">
+            <div class="section-eyebrow">Experience</div>
+            <h2 class="section-title">Professional Background</h2>
+            <p class="section-subtitle">
+              Roles blending Unity development, cognitive game design, and research.
+            </p>
+          </header>
+
+          <div class="timeline">
+            <!-- KingKodeStudio -->
+            <div class="timeline-item">
+              <div class="timeline-role">
+                Founder &amp; Unity Game Developer
+              </div>
+              <div class="timeline-org">KingKodeStudio</div>
+              <div class="timeline-meta">20XX – Present · Remote</div>
+              <ul class="timeline-list">
+                <li>Develop and ship Unity-based mobile games for Android.</li>
+                <li>
+                  Design gameplay systems, UI flows, and content pipelines for
+                  small teams.
+                </li>
+                <li>
+                  Handle end-to-end production from prototyping to publishing.
+                </li>
+              </ul>
+            </div>
+
+            <!-- Freelance -->
+            <div class="timeline-item">
+              <div class="timeline-role">Freelance / Contract Unity Developer</div>
+              <div class="timeline-org">Various clients</div>
+              <div class="timeline-meta">20XX – Present · Remote / Hybrid</div>
+              <ul class="timeline-list">
+                <li>
+                  Implement gameplay features, tools, and UI using Unity &amp; C#.
+                </li>
+                <li>
+                  Debug and profile performance, including Android crashes
+                  (libunity.so) and async loading issues.
+                </li>
+                <li>
+                  Collaborate with designers, artists, and researchers on game
+                  mechanics and UX.
+                </li>
+              </ul>
+            </div>
+
+            <!-- Research assistant -->
+            <div class="timeline-item">
+              <div class="timeline-role">
+                Research Assistant – Game-Based Cognitive Assessment
+              </div>
+              <div class="timeline-org">University of Tehran</div>
+              <div class="timeline-meta">20XX – 20XX · Research Lab</div>
+              <ul class="timeline-list">
+                <li>
+                  Designed experimental game tasks targeting attention and
+                  reaction speed.
+                </li>
+                <li>
+                  Developed Unity simulations and data-collection pipelines for
+                  studies.
+                </li>
+                <li>
+                  Co-authored and presented an IEEE-published paper on
+                  game-driven cognitive screening.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RESEARCH -->
+      <section id="research">
+        <div class="container">
+          <header class="section-header">
+            <div class="section-eyebrow">Research</div>
+            <h2 class="section-title">Game-Based Cognitive Assessment</h2>
+            <p class="section-subtitle">
+              Bridging experimental design, gameplay, and behavioral analysis to
+              explore how games can support screening and therapy.
+            </p>
+          </header>
+
+          <div class="grid">
+            <article class="card">
+              <div class="card-header-row">
+                <h3 class="card-title">
+                  Agent-Based Simulation for Video-Game-Driven Screening
+                </h3>
+                <span class="card-tag">IEEE Publication</span>
+              </div>
+              <div class="card-meta">
+                International Video Game Symposium · Best Presentation / Award
+              </div>
+              <p class="card-body">
+                This work explores how video game environments and multi-agent
+                simulations can be used to support screening and early detection
+                through structured interaction patterns.
+              </p>
+              <ul class="card-list">
+                <li>
+                  Used Unity-based environments to create controlled cognitive tasks.
+                </li>
+                <li>
+                  Applied agent-based modeling to simulate and analyze behavior.
+                </li>
+                <li>
+                  Contributed to the growing field of serious games and
+                  game-based assessment.
+                </li>
+              </ul>
+              <div class="card-footer">
+                <a href="#" class="card-link" target="_blank" rel="noreferrer noopener">
+                  View paper / abstract
+                </a>
+                <span class="muted">Keywords: attention · screening · agents</span>
+              </div>
+            </article>
+
+            <article class="card">
+              <h3 class="card-title">Research interests</h3>
+              <p class="card-body">
+                I’m particularly interested in collaborating with labs and
+                industry partners working at the intersection of:
+              </p>
+              <ul class="card-list">
+                <li>Game-based cognitive and behavioral assessment.</li>
+                <li>Reaction-time and attention measurement through gameplay.</li>
+                <li>Adaptive systems that respond to player performance.</li>
+                <li>Serious games for therapy, training, and screening.</li>
+              </ul>
+              <p class="card-body">
+                I’m open to industry-based PhD programs and joint lab–industry
+                collaborations where Unity games and cognitive science meet.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills">
+        <div class="container">
+          <header class="section-header">
+            <div class="section-eyebrow">Skills</div>
+            <h2 class="section-title">Technical &amp; Research Stack</h2>
+            <p class="section-subtitle">
+              Unity-focused, with a strong foundation in C#, rendering concepts,
+              and experimental design.
+            </p>
+          </header>
+
+          <div class="skills-grid">
+            <div class="card">
+              <div class="skills-group-title">Technical</div>
+              <div class="skill-badges">
+                <span class="skill-badge">Unity (2D &amp; 3D)</span>
+                <span class="skill-badge">C#</span>
+                <span class="skill-badge">Gameplay Programming</span>
+                <span class="skill-badge">Async / Await</span>
+                <span class="skill-badge">State Machines</span>
+                <span class="skill-badge">UI / UX Implementation</span>
+                <span class="skill-badge">Mobile Optimization</span>
+                <span class="skill-badge">Android Build &amp; Debugging</span>
+                <span class="skill-badge">libunity.so Crash Analysis</span>
+                <span class="skill-badge">Remote Assets &amp; Streaming</span>
+                <span class="skill-badge">Git / GitHub</span>
+                <span class="skill-badge">Basic Shaders &amp; Rendering</span>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="skills-group-title">Research &amp; Cognitive</div>
+              <div class="skill-badges">
+                <span class="skill-badge">Game-Based Assessment</span>
+                <span class="skill-badge">Cognitive Task Design</span>
+                <span class="skill-badge">Reaction-Time Measurement</span>
+                <span class="skill-badge">Attention &amp; Focus</span>
+                <span class="skill-badge">Experiment Design</span>
+                <span class="skill-badge">Agent-Based Modeling</span>
+                <span class="skill-badge">Behavioral Analytics</span>
+                <span class="skill-badge">Scientific Writing</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about">
+        <div class="container">
+          <header class="section-header">
+            <div class="section-eyebrow">About</div>
+            <h2 class="section-title">A Bit About Me</h2>
+          </header>
+
+          <p class="about-text">
+            I’m a Unity developer and software engineer with a strong interest in
+            how games can be used as tools for understanding and improving
+            cognitive performance. My background combines
+            <strong>game development</strong>, <strong>software engineering</strong>,
+            and <strong>academic research</strong>, and I enjoy working on
+            projects that sit at that intersection.
+          </p>
+          <br />
+          <p class="about-text">
+            In practice, that means building prototypes, testing mechanics,
+            optimizing performance, and collaborating closely with researchers and
+            designers. I’m particularly motivated by projects that use games for
+            <strong>assessment, training, or therapy</strong>, and I’m currently
+            exploring industry-based PhD opportunities and collaborations in this
+            space.
+          </p>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact">
+        <div class="container">
+          <header class="section-header">
+            <div class="section-eyebrow">Contact</div>
+            <h2 class="section-title">Let’s Connect</h2>
+          </header>
+
+          <p class="contact-text">
+            If you’d like to talk about collaboration, research, or a Unity role
+            related to game-based assessment and cognitive tools, feel free to
+            reach out. I’m open to remote opportunities and cross-border
+            projects.
+          </p>
+
+          <div class="contact-list">
+            <div>
+              Email:
+              <a href="mailto:your.email@example.com">
+                your.email@example.com
+              </a>
+            </div>
+            <div>
+              LinkedIn:
+              <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noreferrer noopener">
+                linkedin.com/in/your-profile
+              </a>
+            </div>
+            <div>
+              GitHub:
+              <a href="https://github.com/your-username" target="_blank" rel="noreferrer noopener">
+                github.com/your-username
+              </a>
+            </div>
+            <div>
+              Google Play (KingKodeStudio):
+              <a href="https://play.google.com/store/apps/dev?id=YOUR_ID"
+                target="_blank"
+                rel="noreferrer noopener">
+                Google Play Developer Page
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <span>© <span id="year"></span> · Sheyda · Unity &amp; Cognitive Games</span>
+        <span class="muted">Built with HTML &amp; CSS · Hosted on GitHub Pages</span>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
