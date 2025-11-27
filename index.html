@@ -542,6 +542,17 @@
       border-color: rgba(56, 189, 248, 0.6);
     }
 
+    .image-gallery {
+      display: flex;
+      flex-direction: column;   /* STACK items vertically */
+      gap: 1rem;
+      width: fit-content;
+    }
+    
+    .image-gallery-item img {
+      width: 260px;             /* adjust to match your layout */
+      border-radius: 12px;
+    }
     
     /* EXPERIENCE */
     .timeline {
@@ -822,10 +833,10 @@
             
                 <span class="muted">Clinical assessment · Cognitive profiling</span>
               </div>
-              <div class="card-gallery">
+              <div class="image-gallery">
               <a
                 href="images/MemoryUpdating.jpg"
-                class="card-gallery-item"
+                class="image-gallery-item"
                 target="_blank"
                 rel="noreferrer noopener"
               >
@@ -833,7 +844,7 @@
               </a>
               <a
                 href="images/NBack.jpg"
-                class="card-gallery-item"
+                class="image-gallery-item"
                 target="_blank"
                 rel="noreferrer noopener"
               >
